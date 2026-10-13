@@ -1,3 +1,4 @@
+
 # Healthy Life — Authentication Page (Angular 21)
 
 Login + Create Account page for the *Healthy Lifestyle Optimization Platform*.
@@ -174,3 +175,10 @@ the message is shown under the matching field (control names equal the JSON prop
 - **`google-identity.service.ts`** — loads Google's script only when a client ID exists, then hands the Google ID token to the component. It never logs anyone in by itself.
 - **`auth-page.html`** — `@if` blocks show errors only after the user touched a field; `aria-invalid` / `aria-describedby` connect each error to its input for screen readers.
 - **`auth-page.css`** — colors are CSS variables at the top; change them to re-theme the whole page.
+---
+
+## Main Project
+
+# Graduation--project
+
+A health and wellness platform built with ASP.NET Core Web API and Clean Architecture.
