@@ -1,0 +1,156 @@
+<div class="auth-container">
+  <div class="auth-card">
+
+    <!-- Brand -->
+    <div class="brand">
+      <div class="brand-icon">✚</div>
+      <h1>Healthy<span>Life</span></h1>
+      <p>Your journey to a healthier life starts here.</p>
+    </div>
+
+    <!-- Login Heading -->
+    <div class="auth-heading">
+      <h2>Welcome Back!</h2>
+      <p>Sign in to continue your healthy journey.</p>
+    </div>
+
+    <!-- Login Form -->
+    <form class="auth-form">
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <div class="label-row">
+          <label for="password">Password</label>
+          <a routerLink="/forgot-password">Forgot password?</a>
+        </div>
+
+        <div class="password-wrapper">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+          />
+
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="showPassword = !showPassword"
+            [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+            [attr.aria-pressed]="showPassword"
+          >
+            <svg
+              *ngIf="!showPassword"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+
+            <svg
+              *ngIf="showPassword"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 3l18 18"></path>
+              <path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"></path>
+              <path d="M9.9 5.2A10.8 10.8 0 0 1 12 5c6.4 0 10 7 10 7a15.8 15.8 0 0 1-4 4.8"></path>
+              <path d="M6.2 6.2A16.5 16.5 0 0 0 2 12s3.6 7 10 7a10.5 10.5 0 0 0 4.2-.9"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Remember Me -->
+      <div class="form-options">
+        <label class="remember">
+          <input type="checkbox" name="rememberMe" />
+          <span>Remember me</span>
+        </label>
+      </div>
+
+      <!-- Sign In Button -->
+      <button type="submit" class="submit-btn">
+        Sign In
+      </button>
+    </form>
+
+    <!-- Divider -->
+    <div class="divider">
+      <span>OR</span>
+    </div>
+
+    <!-- Google Sign In -->
+    <button type="button" class="google-btn">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 48 48"
+        aria-hidden="true"
+      >
+        <path
+          fill="#EA4335"
+          d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
+        />
+        <path
+          fill="#4285F4"
+          d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.76 7.18l7.73 6C44.42 37.92 46.98 31.77 46.98 24.55z"
+        />
+        <path
+          fill="#FBBC05"
+          d="M10.53 28.59A14.4 14.4 0 0 1 9.75 24c0-1.59.27-3.13.76-4.59l-7.98-6.19A23.9 23.9 0 0 0 0 24c0 3.87.93 7.52 2.56 10.78l7.97-6.19z"
+        />
+        <path
+          fill="#34A853"
+          d="M24 48c6.48 0 11.93-2.13 15.91-5.8l-7.73-6c-2.15 1.45-4.92 2.3-8.18 2.3-6.26 0-11.57-4.22-13.46-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
+        />
+      </svg>
+
+      <span>Continue with Google</span>
+    </button>
+
+    <!-- Register Link -->
+    <p class="switch-text">
+      Don't have an account?
+      <a routerLink="/register">Create Account</a>
+    </p>
+
+    <!-- Footer -->
+    <div class="footer-text">
+      © 2026 Healthy Life. All rights reserved.
+    </div>
+
+  </div>
+</div>

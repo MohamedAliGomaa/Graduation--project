@@ -1,0 +1,677 @@
+/* ========================================
+   Healthy Life - Register Page
+   Professional Healthcare UI
+======================================== */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #183b32;
+  --primary: #198754;
+  --primary-dark: #195b3b;
+  --primary-light: #e4f5eb;
+  --text-main: #183b32;
+  --text-muted: #718178;
+  --border: #dce8e0;
+  --error: #dc3545;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ========================================
+   Page Background
+======================================== */
+
+.auth-container {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px 20px;
+
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(14, 61, 39, 0.12),
+      rgba(25, 91, 59, 0.08)
+    ),
+    url('/healthy-background.png');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* ========================================
+   Main Card
+======================================== */
+
+.auth-card {
+  position: relative;
+
+  width: 100%;
+  max-width: 620px;
+
+  margin: auto;
+  padding: 34px 40px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 24px;
+
+  box-shadow:
+    0 24px 65px rgba(18, 67, 42, 0.20),
+    0 4px 14px rgba(18, 67, 42, 0.06);
+
+  animation: registerEntrance 0.45s ease-out;
+}
+
+/* ========================================
+   Brand
+======================================== */
+
+.brand {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.brand-icon {
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 11px;
+
+  border-radius: 17px;
+
+  background: var(--primary-light);
+  color: var(--primary);
+
+  font-size: 32px;
+  font-weight: 700;
+
+  box-shadow: 0 5px 15px rgba(25, 135, 84, 0.08);
+}
+
+.brand h1 {
+  margin: 0;
+
+  color: var(--text-main);
+
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.brand h1 span {
+  color: var(--primary);
+}
+
+.brand p {
+  margin: 8px 0 0;
+
+  color: var(--text-muted);
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   Page Heading
+======================================== */
+
+.auth-heading {
+  margin-bottom: 25px;
+}
+
+.auth-heading h2 {
+  margin: 0 0 8px;
+
+  color: var(--text-main);
+
+  font-size: 25px;
+  font-weight: 750;
+  letter-spacing: -0.4px;
+}
+
+.auth-heading p {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   Form
+======================================== */
+
+.auth-form {
+  width: 100%;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin: 23px 0 17px;
+  padding-bottom: 11px;
+
+  border-bottom: 1px solid var(--border);
+
+  color: #246443;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+}
+
+.section-title::before {
+  content: '';
+
+  width: 4px;
+  height: 15px;
+
+  flex-shrink: 0;
+
+  border-radius: 4px;
+  background: var(--primary);
+}
+
+/* Two-column form layout */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 0;
+}
+
+.form-group {
+  min-width: 0;
+  margin-bottom: 17px;
+}
+
+.form-group > label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #344d42;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/* ========================================
+   Inputs
+======================================== */
+
+.form-group input {
+  display: block;
+
+  width: 100%;
+  height: 46px;
+
+  padding: 0 13px;
+
+  border: 1px solid #d6e3da;
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: var(--text-main);
+
+  font-family: inherit;
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.form-group input::placeholder {
+  color: #9aa99f;
+  opacity: 1;
+}
+
+.form-group input:hover:not(:disabled):not(:focus) {
+  border-color: #a9c4b2;
+}
+
+.form-group input:focus {
+  border-color: var(--primary);
+
+  box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.12);
+
+  background: #ffffff;
+}
+
+.form-group input:focus-visible {
+  outline: none;
+}
+
+.form-group input.invalid {
+  border-color: var(--error);
+
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.08);
+}
+
+.form-group input.invalid:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.12);
+}
+
+/* Supporting text */
+
+.form-group small {
+  display: block;
+
+  margin-top: 6px;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* ========================================
+   Password Fields
+======================================== */
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  padding-right: 46px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+
+  transform: translateY(-50%);
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--primary);
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.toggle-password:hover {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.toggle-password:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+.toggle-password svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   Password Requirements
+======================================== */
+
+.password-hint {
+  display: block;
+
+  margin: 0 0 22px;
+  padding: 12px 14px;
+
+  border: 1px solid #dceee2;
+  border-radius: 10px;
+
+  background: #f5faf6;
+
+  color: #61766a;
+
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+/* ========================================
+   Validation Messages
+======================================== */
+
+.error-message {
+  display: block;
+
+  margin-top: 6px;
+
+  color: var(--error);
+
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.form-error {
+  margin: 14px 0 0;
+  padding: 11px 13px;
+
+  border: 1px solid #f3c5ca;
+  border-radius: 9px;
+
+  background: #fff5f5;
+
+  color: #b42332;
+
+  text-align: center;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   Create Account Button
+======================================== */
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 49px;
+
+  padding: 13px 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(
+    135deg,
+    #2d8556 0%,
+    #195b3b 100%
+  );
+
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15px;
+
+  box-shadow: 0 7px 18px rgba(25, 91, 59, 0.18);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-1px);
+
+  box-shadow: 0 10px 23px rgba(25, 91, 59, 0.25);
+
+  filter: brightness(1.04);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn:focus-visible {
+  outline: 3px solid rgba(25, 135, 84, 0.35);
+  outline-offset: 3px;
+}
+
+/* ========================================
+   Sign In Link
+======================================== */
+
+.switch-text {
+  margin: 22px 0 0;
+
+  color: var(--text-muted);
+
+  text-align: center;
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.switch-text a {
+  color: var(--primary);
+
+  font-weight: 800;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.switch-text a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.switch-text a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ========================================
+   Footer
+======================================== */
+
+.footer-text {
+  margin-top: 24px;
+  padding-top: 15px;
+
+  border-top: 1px solid #edf2ee;
+
+  color: #8b9b90;
+
+  text-align: center;
+
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   Entrance Animation
+======================================== */
+
+@keyframes registerEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect reduced motion preference */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   Tablet
+======================================== */
+
+@media (max-width: 700px) {
+  .auth-container {
+    padding: 24px 16px;
+  }
+
+  .auth-card {
+    max-width: 560px;
+    padding: 30px 28px;
+  }
+}
+
+/* ========================================
+   Mobile
+======================================== */
+
+@media (max-width: 520px) {
+  .auth-container {
+    align-items: flex-start;
+
+    min-height: 100vh;
+
+    padding: 18px 12px;
+
+    background-attachment: scroll;
+  }
+
+  .auth-card {
+    width: 100%;
+
+    padding: 25px 20px;
+
+    border-radius: 19px;
+  }
+
+  .brand {
+    margin-bottom: 23px;
+  }
+
+  .brand-icon {
+    width: 49px;
+    height: 49px;
+
+    border-radius: 15px;
+
+    font-size: 29px;
+  }
+
+  .brand h1 {
+    font-size: 26px;
+  }
+
+  .brand p {
+    font-size: 12px;
+  }
+
+  .auth-heading {
+    margin-bottom: 22px;
+  }
+
+  .auth-heading h2 {
+    font-size: 22px;
+  }
+
+  .auth-heading p {
+    font-size: 12px;
+  }
+
+  .section-title {
+    margin-top: 21px;
+    margin-bottom: 15px;
+  }
+
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group input {
+    height: 46px;
+    font-size: 13px;
+  }
+
+  .password-hint {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 11px 12px;
+  }
+
+  .submit-btn {
+    min-height: 48px;
+  }
+
+  .switch-text {
+    margin-top: 20px;
+  }
+
+  .footer-text {
+    margin-top: 21px;
+  }
+}
+
+/* ========================================
+   Small Mobile
+======================================== */
+
+@media (max-width: 360px) {
+  .auth-container {
+    padding: 12px 8px;
+  }
+
+  .auth-card {
+    padding: 22px 15px;
+    border-radius: 16px;
+  }
+
+  .brand h1 {
+    font-size: 24px;
+  }
+
+  .auth-heading h2 {
+    font-size: 20px;
+  }
+
+  .form-group > label {
+    font-size: 12px;
+  }
+}

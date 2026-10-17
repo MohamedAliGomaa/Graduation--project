@@ -1,0 +1,271 @@
+<div class="profile-container">
+  <div class="profile-card">
+
+    <!-- Brand -->
+    <div class="brand">
+      <div class="brand-icon">✚</div>
+      <h1>Healthy<span>Life</span></h1>
+    </div>
+
+    <!-- Heading -->
+    <div class="profile-heading">
+      <div class="step-badge">YOUR HEALTH JOURNEY</div>
+
+      <h2>Let's Get to Know You!</h2>
+
+      <p>
+        Tell us a little about yourself so we can personalize
+        your Healthy Life experience.
+      </p>
+    </div>
+
+    <!-- Profile Form -->
+    <form
+      class="profile-form"
+      [formGroup]="profileForm"
+      (ngSubmit)="onSubmit()"
+    >
+
+      <!-- Height & Weight -->
+      <div class="form-row">
+
+        <!-- Height -->
+        <div class="form-group">
+          <label for="height">Height</label>
+
+          <div class="input-wrapper">
+            <input
+              type="number"
+              id="height"
+              formControlName="height"
+              placeholder="e.g. 178"
+              min="1"
+              [class.invalid]="
+                profileForm.controls.height.invalid &&
+                profileForm.controls.height.touched
+              "
+              [attr.aria-invalid]="
+                profileForm.controls.height.invalid &&
+                profileForm.controls.height.touched
+              "
+            />
+
+            <span class="unit">cm</span>
+          </div>
+
+          @if (
+            profileForm.controls.height.hasError('required') &&
+            profileForm.controls.height.touched
+          ) {
+            <small class="error-message">
+              Height is required.
+            </small>
+          }
+
+          @if (
+            profileForm.controls.height.hasError('min') &&
+            profileForm.controls.height.touched
+          ) {
+            <small class="error-message">
+              Height must be greater than zero.
+            </small>
+          }
+        </div>
+
+        <!-- Weight -->
+        <div class="form-group">
+          <label for="weight">Weight</label>
+
+          <div class="input-wrapper">
+            <input
+              type="number"
+              id="weight"
+              formControlName="weight"
+              placeholder="e.g. 80"
+              min="1"
+              step="0.1"
+              [class.invalid]="
+                profileForm.controls.weight.invalid &&
+                profileForm.controls.weight.touched
+              "
+              [attr.aria-invalid]="
+                profileForm.controls.weight.invalid &&
+                profileForm.controls.weight.touched
+              "
+            />
+
+            <span class="unit">kg</span>
+          </div>
+
+          @if (
+            profileForm.controls.weight.hasError('required') &&
+            profileForm.controls.weight.touched
+          ) {
+            <small class="error-message">
+              Weight is required.
+            </small>
+          }
+
+          @if (
+            profileForm.controls.weight.hasError('min') &&
+            profileForm.controls.weight.touched
+          ) {
+            <small class="error-message">
+              Weight must be greater than zero.
+            </small>
+          }
+        </div>
+
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label>Gender</label>
+
+        <div class="option-row">
+
+          <!-- Male -->
+          <label class="option-card">
+            <input
+              type="radio"
+              formControlName="gender"
+              value="Male"
+              [class.invalid]="
+                profileForm.controls.gender.invalid &&
+                profileForm.controls.gender.touched
+              "
+            />
+
+            <span class="option-content">
+              <span class="option-icon">♂</span>
+              <span>Male</span>
+            </span>
+          </label>
+
+          <!-- Female -->
+          <label class="option-card">
+            <input
+              type="radio"
+              formControlName="gender"
+              value="Female"
+            />
+
+            <span class="option-content">
+              <span class="option-icon">♀</span>
+              <span>Female</span>
+            </span>
+          </label>
+
+        </div>
+
+        @if (
+          profileForm.controls.gender.hasError('required') &&
+          profileForm.controls.gender.touched
+        ) {
+          <small class="error-message">
+            Please select your gender.
+          </small>
+        }
+      </div>
+
+      <!-- Activity Level -->
+      <div class="form-group">
+        <label for="activityLevel">Activity Level</label>
+
+        <select
+          id="activityLevel"
+          formControlName="activityLevel"
+          [class.invalid]="
+            profileForm.controls.activityLevel.invalid &&
+            profileForm.controls.activityLevel.touched
+          "
+          [attr.aria-invalid]="
+            profileForm.controls.activityLevel.invalid &&
+            profileForm.controls.activityLevel.touched
+          "
+        >
+          <option value="" disabled>
+            Select your activity level
+          </option>
+
+          <option value="Low">
+            Low — Mostly sitting
+          </option>
+
+          <option value="Moderate">
+            Moderate — Some daily activity
+          </option>
+
+          <option value="High">
+            High — Very active
+          </option>
+        </select>
+
+        @if (
+          profileForm.controls.activityLevel.hasError('required') &&
+          profileForm.controls.activityLevel.touched
+        ) {
+          <small class="error-message">
+            Please select your activity level.
+          </small>
+        }
+      </div>
+
+      <!-- Primary Goal -->
+      <div class="form-group">
+        <label for="primaryGoal">What's Your Primary Goal?</label>
+
+        <select
+          id="primaryGoal"
+          formControlName="primaryGoal"
+          [class.invalid]="
+            profileForm.controls.primaryGoal.invalid &&
+            profileForm.controls.primaryGoal.touched
+          "
+          [attr.aria-invalid]="
+            profileForm.controls.primaryGoal.invalid &&
+            profileForm.controls.primaryGoal.touched
+          "
+        >
+          <option value="" disabled>
+            Choose your health goal
+          </option>
+
+          <option value="LoseWeight">
+            Lose Weight
+          </option>
+
+          <option value="MaintainWeight">
+            Maintain Weight
+          </option>
+
+          <option value="GainWeight">
+            Gain Weight
+          </option>
+        </select>
+
+        @if (
+          profileForm.controls.primaryGoal.hasError('required') &&
+          profileForm.controls.primaryGoal.touched
+        ) {
+          <small class="error-message">
+            Please select your primary goal.
+          </small>
+        }
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="submit-btn">
+        Save &amp; Continue
+        <span>→</span>
+      </button>
+
+      <!-- Privacy Note -->
+      <p class="privacy-note">
+        🔒 Your personal information is kept private and secure.
+      </p>
+
+    </form>
+
+  </div>
+</div>

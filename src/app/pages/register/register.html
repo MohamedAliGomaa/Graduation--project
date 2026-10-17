@@ -1,0 +1,359 @@
+<div class="auth-container">
+  <div class="auth-card register-card">
+
+    <!-- Brand -->
+    <div class="brand">
+      <div class="brand-icon">✚</div>
+      <h1>Healthy<span>Life</span></h1>
+      <p>Let's start your journey toward a healthier lifestyle.</p>
+    </div>
+
+    <!-- Heading -->
+    <div class="auth-heading">
+      <h2>Create Your Account</h2>
+      <p>Join us and start building healthier habits.</p>
+    </div>
+
+    <!-- Registration Form -->
+    <form
+      class="auth-form"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      novalidate
+    >
+
+      <!-- Personal Information -->
+      <h3 class="section-title">PERSONAL INFORMATION</h3>
+
+      <div class="form-grid">
+
+        <!-- First Name -->
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+
+          <input
+            type="text"
+            id="firstName"
+            formControlName="firstName"
+            placeholder="First name"
+            autocomplete="given-name"
+            [class.invalid]="f['firstName'].invalid && f['firstName'].touched"
+            [attr.aria-invalid]="f['firstName'].invalid && f['firstName'].touched"
+          />
+
+          @if (f['firstName'].hasError('required') && f['firstName'].touched) {
+            <small class="error-message">
+              First name is required.
+            </small>
+          }
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+
+          <input
+            type="text"
+            id="lastName"
+            formControlName="lastName"
+            placeholder="Last name"
+            autocomplete="family-name"
+            [class.invalid]="f['lastName'].invalid && f['lastName'].touched"
+            [attr.aria-invalid]="f['lastName'].invalid && f['lastName'].touched"
+          />
+
+          @if (f['lastName'].hasError('required') && f['lastName'].touched) {
+            <small class="error-message">
+              Last name is required.
+            </small>
+          }
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="form-group">
+          <label for="dateOfBirth">Date of Birth</label>
+
+          <input
+            type="date"
+            id="dateOfBirth"
+            formControlName="dateOfBirth"
+            autocomplete="bday"
+            [max]="today"
+            [class.invalid]="f['dateOfBirth'].invalid && f['dateOfBirth'].touched"
+            [attr.aria-invalid]="f['dateOfBirth'].invalid && f['dateOfBirth'].touched"
+          />
+
+          @if (f['dateOfBirth'].hasError('required') && f['dateOfBirth'].touched) {
+            <small class="error-message">
+              Date of birth is required.
+            </small>
+          }
+
+          @if (f['dateOfBirth'].hasError('futureDate') && f['dateOfBirth'].touched) {
+            <small class="error-message">
+              Date cannot be in the future.
+            </small>
+          }
+        </div>
+
+        <!-- Phone Number -->
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+
+          <input
+            type="tel"
+            id="phone"
+            formControlName="phone"
+            placeholder="+20 100 123 4567"
+            autocomplete="tel"
+            [class.invalid]="f['phone'].invalid && f['phone'].touched"
+            [attr.aria-invalid]="f['phone'].invalid && f['phone'].touched"
+          />
+
+          <small>Include your country code.</small>
+
+          @if (f['phone'].hasError('required') && f['phone'].touched) {
+            <small class="error-message">
+              Phone number is required.
+            </small>
+          }
+
+          @if (f['phone'].hasError('pattern') && f['phone'].touched) {
+            <small class="error-message">
+              Enter a valid phone number.
+            </small>
+          }
+        </div>
+
+      </div>
+
+      <!-- Account Details -->
+      <h3 class="section-title">ACCOUNT DETAILS</h3>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          [class.invalid]="f['email'].invalid && f['email'].touched"
+          [attr.aria-invalid]="f['email'].invalid && f['email'].touched"
+        />
+
+        @if (f['email'].hasError('required') && f['email'].touched) {
+          <small class="error-message">
+            Email address is required.
+          </small>
+        }
+
+        @if (f['email'].hasError('email') && f['email'].touched) {
+          <small class="error-message">
+            Enter a valid email address.
+          </small>
+        }
+      </div>
+
+      <!-- Password Fields -->
+      <div class="form-grid">
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password</label>
+
+          <div class="password-wrapper">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              id="password"
+              formControlName="password"
+              placeholder="At least 8 characters"
+              autocomplete="new-password"
+              [class.invalid]="f['password'].invalid && f['password'].touched"
+              [attr.aria-invalid]="f['password'].invalid && f['password'].touched"
+            />
+
+            <button
+              type="button"
+              class="toggle-password"
+              (click)="showPassword = !showPassword"
+              [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+              [attr.aria-pressed]="showPassword"
+            >
+              @if (!showPassword) {
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              } @else {
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 3l18 18"></path>
+                  <path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"></path>
+                  <path d="M9.9 5.2A10.8 10.8 0 0 1 12 5c6.4 0 10 7 10 7a15.8 15.8 0 0 1-4 4.8"></path>
+                  <path d="M6.2 6.2A16.5 16.5 0 0 0 2 12s3.6 7 10 7a10.5 10.5 0 0 0 4.2-.9"></path>
+                </svg>
+              }
+            </button>
+          </div>
+
+          @if (f['password'].hasError('required') && f['password'].touched) {
+            <small class="error-message">
+              Password is required.
+            </small>
+          }
+
+          @if (f['password'].hasError('minlength') && f['password'].touched) {
+            <small class="error-message">
+              Use at least 8 characters.
+            </small>
+          }
+
+          @if (f['password'].hasError('pattern') && f['password'].touched) {
+            <small class="error-message">
+              Include at least one uppercase letter and one special character.
+            </small>
+          }
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+
+          <div class="password-wrapper">
+            <input
+              [type]="showConfirmPassword ? 'text' : 'password'"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+              placeholder="Repeat your password"
+              autocomplete="new-password"
+              [class.invalid]="
+                (f['confirmPassword'].invalid && f['confirmPassword'].touched) ||
+                (registerForm.hasError('passwordMismatch') && f['confirmPassword'].touched)
+              "
+              [attr.aria-invalid]="
+                (f['confirmPassword'].invalid && f['confirmPassword'].touched) ||
+                (registerForm.hasError('passwordMismatch') && f['confirmPassword'].touched)
+              "
+            />
+
+            <button
+              type="button"
+              class="toggle-password"
+              (click)="showConfirmPassword = !showConfirmPassword"
+              [attr.aria-label]="showConfirmPassword ? 'Hide confirm password' : 'Show confirm password'"
+              [attr.aria-pressed]="showConfirmPassword"
+            >
+              @if (!showConfirmPassword) {
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              } @else {
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 3l18 18"></path>
+                  <path d="M10.6 10.6a2 2 0 0 0 2.8 2.8"></path>
+                  <path d="M9.9 5.2A10.8 10.8 0 0 1 12 5c6.4 0 10 7 10 7a15.8 15.8 0 0 1-4 4.8"></path>
+                  <path d="M6.2 6.2A16.5 16.5 0 0 0 2 12s3.6 7 10 7a10.5 10.5 0 0 0 4.2-.9"></path>
+                </svg>
+              }
+            </button>
+          </div>
+
+          @if (f['confirmPassword'].hasError('required') && f['confirmPassword'].touched) {
+            <small class="error-message">
+              Please confirm your password.
+            </small>
+          }
+
+          @if (registerForm.hasError('passwordMismatch') && f['confirmPassword'].touched) {
+            <small class="error-message">
+              Passwords do not match.
+            </small>
+          }
+        </div>
+
+      </div>
+
+      <!-- Password Requirements -->
+      <small class="password-hint">
+        Password must contain:
+        <br />
+        • At least 8 characters
+        <br />
+        • At least one uppercase letter (A-Z)
+        <br />
+        • At least one special character (e.g. @, #, $, !)
+      </small>
+
+      <!-- Submit -->
+      <button type="submit" class="submit-btn">
+        Create Account
+      </button>
+
+      @if (submitted && registerForm.invalid) {
+        <p class="form-error" role="alert">
+          Please check the highlighted fields and correct the errors.
+        </p>
+      }
+
+    </form>
+
+    <!-- Login Link -->
+    <p class="switch-text">
+      Already have an account?
+      <a routerLink="/login">Sign In</a>
+    </p>
+
+    <!-- Footer -->
+    <div class="footer-text">
+      © 2026 Healthy Life. All rights reserved.
+    </div>
+
+  </div>
+</div>
